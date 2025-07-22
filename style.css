@@ -11,7 +11,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em 2em;
+  padding: 0em 2em;
 }
 
 .logo img {
@@ -26,7 +26,7 @@ ul.menu {
 }
 
 ul.menu li {
-  margin-left: 0em;
+  margin-left: 1.5em;
 }
 
 ul.menu li a {
