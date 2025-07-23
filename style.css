@@ -20,6 +20,7 @@ nav {
 
 ul.menu {
   display: flex;
+  align-items: center; 
   list-style: none;
   margin: 0em;
   padding: 0;
@@ -27,7 +28,6 @@ ul.menu {
 
 ul.menu li {
   margin-left: 1.5em;
-  align-items: center;
 }
 
 ul.menu li a {
@@ -40,5 +40,5 @@ ul.menu li a {
 h1 { margin-bottom: 0.1em; }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
-li { margin-bottom: 1em; }
+li { margin-bottom: 0em; }
 footer { text-align: center; padding: 1em; background: #e9e9e9; margin-top: 2em; }
