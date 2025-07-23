@@ -5,6 +5,7 @@ body {
 header {
   background: #fff;
   color: #000000;
+  position: fixed;
 }
 
 nav {
