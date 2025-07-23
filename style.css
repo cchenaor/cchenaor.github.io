@@ -1,44 +1,33 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #8eec69;
-  color: #222;
+  margin: 0; padding: 0; background: #8eec69; color: #222;
 }
-
-/* Solo header está fixed, nav ya no lo necesita */
 header {
   background: #fff;
-  color: #000;
+  color: #000000;
   position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Sombra opcional */
+  z-index: 999; 
 }
 
-/* Barra superior horizontal y centrada */
 nav {
   display: flex;
-  align-items: center;                  /* Centra logo y menú */
+  align-items: center;
   justify-content: space-between;
-  padding: 0.5em 1.5em;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 0.5em;
+  position: fixed;
+  top: 0;
 }
 
-/* Logo compactado y alineado */
 .logo img {
-  height: 36px;                         /* Puedes ajustar a gusto */
-  display: block;
+  height: 40px;
 }
 
-/* Menú horizontal */
 ul.menu {
   display: flex;
-  align-items: center;                   /* Muy importante */
+  align-items: center; 
   list-style: none;
-  margin: 0;
+  margin: 0em;
   padding: 0 1.5em 0 0;
 }
 
@@ -47,33 +36,12 @@ ul.menu li {
 }
 
 ul.menu li a {
-  color: #000;
+  color: #000000;
   text-decoration: none;
   font-weight: bold;
-  display: flex;
-  align-items: center;                   /* Textos centrados verticalmente */
-  height: 36px;                          /* Igual al logo para alineación perfecta */
 }
-
-/* Ajusta el contenido principal para que no quede tapado */
-main, section:first-of-type {
-  margin-top: 58px;                      /* O lo que mida tu header */
-}
-
-/* Resto de estilos */
 h1 { margin-bottom: 0.1em; }
-section {
-  max-width: 600px;
-  margin: 2em auto;
-  padding: 1em;
-  background: #fff;
-  border-radius: 8px;
-}
+section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
-footer {
-  text-align: center;
-  padding: 1em;
-  background: #e9e9e9;
-  margin-top: 2em;
-}
+footer { text-align: center; padding: 1em; background: #e9e9e9; margin-top: 2em; }
