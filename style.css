@@ -1,12 +1,12 @@
 body {
   font-family: Arial, sans-serif;
   padding: 0; background: #8eec69; color: #222;
-  margin-top: 60px;
 }
 header {
   background: #fff;
   color: #000000;
   position: fixed;
+  z-index: 999; 
 }
 
 nav {
