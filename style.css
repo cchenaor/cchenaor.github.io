@@ -45,7 +45,7 @@ h1 { margin-bottom: 0.1em; }
 }
 
 .fondo-mitad section {
-  width: 100%;
+  max-width: 100%;
   background: #e8eaff;
 }
 
