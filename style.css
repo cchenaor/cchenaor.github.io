@@ -41,7 +41,7 @@ ul.menu li a {
 h1 { margin-bottom: 0.1em; }
 
 .fondo-mitad section {
-  max-width: 100%;
+  width: 100%;
   background: #8eec69;
 }
 
