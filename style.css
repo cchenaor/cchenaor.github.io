@@ -51,6 +51,7 @@ h1 { margin-bottom: 0.1em; }
   background: #e8eaff;
   min-height: 600px;
   border-radius: 0 0 16px 0; 
+  display: flex;
 }
 .mitad-texto,
 .mitad-img{
