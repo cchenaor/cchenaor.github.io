@@ -55,7 +55,7 @@ h1 { margin-bottom: 0.1em; }
 }
 .mitad-texto,
 .mitad-img{
-  flex: 1 1 75%;
+  flex: 1.2 0.8 50%;
   padding: 5em 0 0 5em;
 }
 h1 {
