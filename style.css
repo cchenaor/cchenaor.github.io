@@ -61,6 +61,9 @@ h1 { margin-bottom: 0.1em; }
   flex: 3 1 0;
   padding: 5em 0 0 5em;
 }
+.mitad-img img{
+  max-width: 90%;
+}
 h1 {
   font-size: 50px;
 }
