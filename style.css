@@ -55,15 +55,15 @@ h1 { margin-bottom: 0.1em; }
 }
 .mitad-texto{
   flex: 1 1 0;
-  padding: 4em 7em 0 1.5em;
+  padding: 4em 6em 0 1.5em;
 }
 .mitad-img{
   flex: 1 1 0;
   padding: 5em 0 1em 0;
 }
 .mitad-img img{
-  max-width: 94%;
-  border-radius: 70px 32px 70px 32px; 
+  max-width: 96%;
+  border-radius: 80px 32px 80px 32px; 
 }
 h1 {
   font-size: 50px;
