@@ -53,13 +53,19 @@ h1 { margin-bottom: 0.1em; }
   border-radius: 0 0 0 64px; 
   display: flex;
 }
-.mitad-texto,
+.mitad-texto{
+  flex: 2 1 0;
+  padding: 4em 0 0 3em;
+}
 .mitad-img{
-  flex: 1.2 0.8 50%;
+  flex: 1 1 0;
   padding: 5em 0 0 5em;
 }
 h1 {
   font-size: 50px;
+}
+p {
+  font-size: 18px;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
