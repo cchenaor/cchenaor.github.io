@@ -54,11 +54,11 @@ h1 { margin-bottom: 0.1em; }
   display: flex;
 }
 .mitad-texto{
-  flex: 2 1 0;
+  flex: 4 1 0;
   padding: 4em 0 0 2em;
 }
 .mitad-img{
-  flex: 2 1 0;
+  flex: 3 1 0;
   padding: 5em 0 0 5em;
 }
 h1 {
