@@ -62,7 +62,8 @@ h1 { margin-bottom: 0.1em; }
   padding: 5em 0 1em 0;
 }
 .mitad-img img{
-  max-width: 96%;
+  max-width: 98%;
+  max-height: 90%;
   border-radius: 80px 32px 80px 32px; 
 }
 h1 {
