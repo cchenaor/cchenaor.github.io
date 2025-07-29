@@ -88,17 +88,9 @@ p {
   color: #000000;
   padding: 0em 1em;
   text-decoration: none;
-  padding-right: 5em;
-  position: relative; 
 }
-.link-servicios::after {
-  content: '→'; 
-  position: absolute;
-  transition: transform 0.3s cubic-bezier(0.45, 0, 0.55, 1);
-  transform: translateY(-50%);
-}
-.link-servicios:hover::after {
-  transform: translate(8px, -50%);
+.link-servicios:hover .flecha {
+  transform: translateX(8px);
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
