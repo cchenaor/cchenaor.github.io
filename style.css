@@ -79,6 +79,10 @@ p {
   text-decoration: none;
   border-radius: 20px 20px 20px 20px; 
   color: #ffffff;
+  font-size: 14px;
+}
+.btn-contacto:hover {
+  background-color: #3445ff;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
