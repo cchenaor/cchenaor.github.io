@@ -77,7 +77,8 @@ p {
   padding: 0.7em 1em;
   background-color: #7782ff; 
   text-decoration: none;
-  border-radius: 10px 10px 10px 10px; 
+  border-radius: 20px 20px 20px 20px; 
+  color: #ffffff;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
