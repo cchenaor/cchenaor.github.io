@@ -89,7 +89,7 @@ p {
   padding: 0em 1em;
   text-decoration: none;
 }
-.link-servicios .flecha {
+.flecha {
   transition: transform 0.3s cubic-bezier(0.45, 0, 0.55, 1);
 }
 .link-servicios:hover .flecha {
@@ -100,10 +100,14 @@ p {
   gap: 0;
   align-items: center;
 }
+.satisfaccion{
+  display: flex; 
+}
 .satisfaccion:not(:last-child)::after {
   content: ">";
   margin: 0 1em;
 }
+
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
