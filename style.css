@@ -38,7 +38,6 @@ ul.menu li a {
   text-decoration: none;
   font-weight: bold;
 }
-h1 { margin-bottom: 0.1em; }
 
 .fondo-mitad {
   width: 100%;
@@ -67,6 +66,7 @@ h1 { margin-bottom: 0.1em; }
   border-radius: 80px 32px 80px 32px; 
 }
 h1 {
+  margin-bottom: 0.1em;
   font-size: 50px;
 }
 p {
@@ -94,6 +94,9 @@ p {
 }
 .link-servicios:hover .flecha {
   transform: translateX(16px);
+}
+.sobre1 h1{
+  font-size: 32px;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
