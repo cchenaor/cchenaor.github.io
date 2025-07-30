@@ -93,17 +93,22 @@ p {
   display: inline-block;
   transition: transform 0.3s cubic-bezier(0.45, 0, 0.55, 1);
 }
-.link-servicios:hover .flecha {
-  transform: translateX(16px);
+.link-servicios:hover{
   color: #394aff;
 }
+.link-servicios:hover .flecha {
+  transform: translateX(8px);
+  color: #394aff;
+}
+
 #sobre1 h1{
   font-size: 24px;
   gap: 0;
   align-items: stretch;
 }
 .satisfaccion{
-  display: flex; 
+  display: flex;
+  justify-content: center;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
 ul { list-style: none; padding: 0; }
