@@ -100,11 +100,12 @@ p {
   transform: translateX(8px);
   color: #394aff;
 }
-
+#sobre1{
+    gap: 0;
+    align-items: stretch;
+}
 #sobre1 h1{
   font-size: 24px;
-  gap: 0;
-  align-items: stretch;
 }
 .satisfaccion{
   display: flex;
