@@ -101,6 +101,7 @@ p {
   color: #394aff;
 }
 #sobre1{
+    display: flex;
     gap: 0;
     align-items: stretch;
 }
@@ -108,6 +109,7 @@ p {
   font-size: 24px;
 }
 .satisfaccion{
+  padding: 1em 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
