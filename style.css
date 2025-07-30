@@ -95,7 +95,7 @@ p {
 .link-servicios:hover .flecha {
   transform: translateX(16px);
 }
-.sobre1 h1{
+#sobre1 h1{
   font-size: 16px;
 }
 section { max-width: 600px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
