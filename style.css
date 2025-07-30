@@ -97,6 +97,7 @@ p {
 }
 #sobre1 h1{
   font-size: 24px;
+  gap: 0;
 }
 .satisfaccion:not(:last-child)::after {
   content: ">";
