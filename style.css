@@ -90,6 +90,7 @@ p {
   text-decoration: none;
 }
 .flecha {
+  display: inline-block;
   transition: transform 0.3s cubic-bezier(0.45, 0, 0.55, 1);
 }
 .link-servicios:hover .flecha {
