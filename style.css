@@ -48,7 +48,6 @@ ul.menu li a {
 .fondo-mitad section {
   max-width: 100%;
   background: #e8eaff;
-  min-height: 600px;
   border-radius: 0 0 0 64px; 
   display: flex;
 }
