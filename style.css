@@ -70,7 +70,7 @@ h1 {
 }
 h2 {
   margin-bottom: 0.1em;
-  font-size: 40px;
+  font-size: 30px;
 }
 p {
   font-size: 14px;
@@ -130,7 +130,7 @@ p {
   font-size: 12px;
   margin-bottom: 4em;
 }
-section {margin-top: 0; padding: 1em ;background: #fff; scroll-margin-top: 60px; }
+section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px; }
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
 footer { text-align: center; padding: 1em; background: #e9e9e9; margin-top: 2em; }
