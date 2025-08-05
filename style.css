@@ -130,6 +130,9 @@ p {
   font-size: 12px;
   margin-bottom: 4em;
 }
+.galeria-proyectos {
+  display: flex;
+}
 .galeria-proyectos img {
   width: calc((100% - 10px) / 6);
 }
