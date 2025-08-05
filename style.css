@@ -136,7 +136,8 @@ p {
   gap: 10px;
 }
 .galeria-proyectos img {
-  width: 100%;
+  width: 80%;
+  height: 100%;
 }
 .img-con-overlay {
   position: relative;
