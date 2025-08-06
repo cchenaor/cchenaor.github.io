@@ -143,11 +143,18 @@ p {
 .img-con-overlay {
   position: relative;
   width: calc((100% - 50px) / 6);
+  height: 100px;
 }
 .img-con-overlay .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.5);
+}
+.galeria-proyectos h3{
+  color: #ffffff;
+}
+.galeria-proyectos p{
+  color: #ffffff;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px; }
 ul { list-style: none; padding: 0; }
