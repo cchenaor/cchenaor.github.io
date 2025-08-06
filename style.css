@@ -143,7 +143,7 @@ p {
 .img-con-overlay {
   position: relative;
   width: calc((100% - 50px) / 6);
-  height: 100px;
+  height: 200px;
 }
 .img-con-overlay .overlay {
   position: absolute;
@@ -152,9 +152,11 @@ p {
 }
 .galeria-proyectos h3{
   color: #ffffff;
+  text-align: center;
 }
 .galeria-proyectos p{
   color: #ffffff;
+  text-align: center;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px; }
 ul { list-style: none; padding: 0; }
