@@ -150,6 +150,7 @@ p {
   position: relative;
   width: calc((100% - 75px) / 6);
   height: 200px;
+  overflow: hidden;
 }
 .img-con-overlay .overlay {
   position: absolute;
