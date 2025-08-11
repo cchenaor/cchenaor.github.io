@@ -134,6 +134,7 @@ p {
   display: flex;
   justify-content: space-between;
   gap: 15px;
+  overflow: hidden;
 }
 .galeria-proyectos img {
   width: 100%;
