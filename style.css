@@ -180,8 +180,9 @@ p {
 }
 #servicios p{
   text-align: center;
-  font-size: 18px;
-  color: #0a0a0a;
+  width: 600px;
+  font-size: 16px;
+  color: #181818;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px; }
 ul { list-style: none; padding: 0; }
