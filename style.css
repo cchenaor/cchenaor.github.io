@@ -164,7 +164,7 @@ p {
   flex-direction: column;
 }
 .img-con-overlay:hover img {
-  transform: scale(1.1); /* Zoom */
+  transform: scale(1.2); /* Zoom */
 }
 .galeria-proyectos h3{
   color: #ffffff;
