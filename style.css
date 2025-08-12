@@ -175,6 +175,7 @@ p {
   text-align: center;
 }
 #servicios{
+  display: flex;
   align-items: center;
   justify-content: center;
 }
