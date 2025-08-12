@@ -200,6 +200,9 @@ p {
   flex-direction: row;
 }
 .servicio-card{
+  flex-direction: row;
+}
+.servicio-textos{
   flex-direction: column;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
