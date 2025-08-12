@@ -174,6 +174,9 @@ p {
   color: #ffffff;
   text-align: center;
 }
+#servicios{
+  align-items: center;
+}
 #servicios h2{
   font-size: 30px;
   text-align: center;
@@ -184,7 +187,7 @@ p {
   font-size: 16px;
   color: #181818;
 }
-section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px; }
+section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
 footer { text-align: center; padding: 1em; background: #e9e9e9; margin-top: 2em; }
