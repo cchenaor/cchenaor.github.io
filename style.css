@@ -176,6 +176,7 @@ p {
 }
 #servicios{
   align-items: center;
+  justify-content: center;
 }
 #servicios h2{
   font-size: 30px;
