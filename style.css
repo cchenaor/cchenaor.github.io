@@ -200,6 +200,7 @@ p {
   flex-direction: row;
 }
 .servicio-card{
+  display: flex;
   flex-direction: row;
 }
 .servicio-textos{
