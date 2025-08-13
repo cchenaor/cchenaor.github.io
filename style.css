@@ -136,6 +136,7 @@ p {
   justify-content: space-between;
   gap: 15px;
   overflow: hidden;
+  z-index: 80;
 }
 .galeria-proyectos img {
   width: 100%;
@@ -185,6 +186,7 @@ p {
 }
 #servicios img{
   height: 200px;
+  padding: 1em; 
 }
 #servicios h2{
   font-size: 30px;
