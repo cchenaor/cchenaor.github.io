@@ -215,6 +215,9 @@ p {
   text-align: left;
   align-items: flex-start;
 }
+.servicio-textos p{
+  text-align: left;
+}
 strong{
   color: #292929;
 }
