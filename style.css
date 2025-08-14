@@ -197,6 +197,10 @@ p {
 .titulo-servicios{
   width: 600px;
 }
+.titulo-servicios p{
+  font-size: 16px;
+  text-align: center;
+}
 .servicios-lista{
   flex-direction: row;
 }
