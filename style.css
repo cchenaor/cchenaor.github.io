@@ -216,6 +216,7 @@ p {
   align-items: flex-start;
 }
 .servicio-textos p{
+  flex-direction: column;
   text-align: left;
   align-items: flex-start;
   display: flex;
@@ -223,7 +224,7 @@ p {
 strong{
   color: #292929;
 }
-br{
+p br{
   font-size: 12px;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
