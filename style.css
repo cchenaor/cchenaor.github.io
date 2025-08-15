@@ -202,6 +202,7 @@ p {
   text-align: center;
 }
 .servicios-lista{
+  display: flex;
   flex-direction: row;
 }
 .servicio-card{
@@ -226,6 +227,7 @@ strong{
   font-size: 16px;
 }
 .btn-contacto{
+  padding: 1em;
   background-color: #7782ff;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
