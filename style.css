@@ -188,7 +188,7 @@ p {
 }
 #servicios img{
   height: 200px;
-  padding: 1em; 
+  margin: 1em;
   border-radius: 20px;
 }
 #servicios h2{
@@ -255,6 +255,9 @@ strong{
   color: #ffffff;
   font-size: 12px;
 
+}
+.btn-wpp:hover {
+  background-color: #8d96fd;
 }
 .servicio-textos h3{
   margin-bottom: 0em;
