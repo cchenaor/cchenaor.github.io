@@ -237,6 +237,9 @@ strong{
 .servicio-textos h3{
   margin-bottom: 0em;
 }
+.servicio-card img{
+  border-radius: 9px;
+}
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
