@@ -265,6 +265,9 @@ strong{
 .servicio-textos p{
   color: #252525;
 }
+.titulo-habilidades{
+  width: 600px;
+}
 .titulo-habilidades h2{
   font-size: 30px;
   text-align: center;
