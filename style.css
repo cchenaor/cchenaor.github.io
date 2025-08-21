@@ -265,7 +265,10 @@ strong{
 .servicio-textos p{
   color: #252525;
 }
-
+.titulo-habilidades h2{
+  font-size: 30px;
+  text-align: center;
+}
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
