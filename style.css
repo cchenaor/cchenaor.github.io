@@ -274,11 +274,16 @@ strong{
 }
 #habilidades{
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .habilidad-card{
   display: flex;
   flex-direction: row;
+}
+.titulo-habilidades p{
+  font-size: 16px;
+  text-align: center;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
