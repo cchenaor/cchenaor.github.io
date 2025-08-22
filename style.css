@@ -266,7 +266,7 @@ strong{
   color: #252525;
 }
 .titulo-habilidades{
-  width: 600px;
+  width: 700px;
 }
 .titulo-habilidades h2{
   font-size: 30px;
@@ -284,6 +284,9 @@ strong{
 .titulo-habilidades p{
   font-size: 16px;
   text-align: center;
+}
+.habilidades-contenido{
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
