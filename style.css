@@ -292,10 +292,13 @@ strong{
   border-radius: 10px;
   border: 0.8px solid #c9c9c9;
   text-align: center;
-  width: calc((100% - 40px) / 3);
+  width: calc((100% - 50px) / 3);
+  justify-content: space-between;
 }
 .habilidades-contenido img {
-  height: 60px;
+  height: 50px;
+}
+.habilidades-textos{
   text-align: left;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
