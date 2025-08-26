@@ -281,10 +281,10 @@ strong{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 15px;
+  gap: 20px;
 }
 .titulo-habilidades p{
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 .habilidades-contenido{
