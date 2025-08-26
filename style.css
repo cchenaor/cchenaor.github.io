@@ -280,6 +280,7 @@ strong{
 .habilidad-card{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .titulo-habilidades p{
   font-size: 15px;
@@ -291,7 +292,7 @@ strong{
   margin: 1.2em;
   border-radius: 10px;
   border: 0.8px solid #c9c9c9;
-  align-items: center;
+  text-align: center;
 }
 .habilidades-contenido img {
   height: 80px;
