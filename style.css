@@ -284,7 +284,7 @@ strong{
   gap: 20px;
 }
 .titulo-habilidades p{
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
 }
 .habilidades-contenido{
@@ -295,6 +295,7 @@ strong{
   text-align: center;
   width: calc((100% - 40px) / 3);
   justify-content: space-between;
+  height: 200px;
 }
 .habilidades-contenido img {
   height: 50px;
