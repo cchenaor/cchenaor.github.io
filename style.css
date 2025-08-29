@@ -309,8 +309,8 @@ strong{
   flex-direction: column;
 }
 #contacto{
-  gap: 40px;
   position: relative;
+  padding: 2em; 
 }
 #contacto p{
   color: #3d3d3d;
@@ -322,6 +322,7 @@ strong{
 .texto-sobre-video{
   position: absolute;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
