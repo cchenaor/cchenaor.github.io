@@ -309,7 +309,8 @@ strong{
   flex-direction: column;
 }
 #contacto{
-  gap: 20px;
+  gap: 40px;
+  position: relative;
 }
 #contacto p{
   color: #3d3d3d;
