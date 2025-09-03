@@ -330,13 +330,14 @@ strong{
   transform: translate(-50%, -50%);
   color: #ffffff;
 }
-.texto-sobre-video h2{
+.texto-sobre-video p{
   font-size: 18px;
   width: 620px ;
 }
 .btn-wppc{
   position: absolute;
   transform: translate(-50%, -50%);
+  padding: 0.8em;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
