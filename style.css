@@ -333,11 +333,14 @@ strong{
 .texto-sobre-video p{
   font-size: 18px;
   width: 620px ;
+  color: #ffffff;
 }
 .btn-wppc{
   position: absolute;
   transform: translate(-50%, -50%);
   padding: 0.8em;
+  top: 70%;
+  left: 30%;
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
