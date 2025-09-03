@@ -310,7 +310,10 @@ strong{
 }
 #contacto{
   position: relative;
-  margin: 1em; 
+  margin: 2em; 
+}
+#contacto h2{
+  font-size: 40px;
 }
 #contacto p{
   color: #3d3d3d;
@@ -333,6 +336,7 @@ strong{
 }
 .btn-wppc{
   position: absolute;
+  transform: translate(-50%, -50%);
 }
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
