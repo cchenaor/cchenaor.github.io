@@ -318,7 +318,7 @@ strong{
 #contacto p{
   color: #3d3d3d;
   position: relative;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 #contacto video {
   display: block;
@@ -345,7 +345,7 @@ strong{
   transform: translate(-50%, -50%);
   padding: 0.8em;
   top: 88%;
-  left: 28%;
+  left: 2%;
   background-color: #ffffff;
   width: 560px ;
   text-align: center;
@@ -359,7 +359,7 @@ strong{
   display: block;
 }
 .btn-wppc:hover strong:first-child{
-  transform: translateY(-100%);
+  transform: translateY(-90%);
 }
 .video-texto {
   align-items: center;
