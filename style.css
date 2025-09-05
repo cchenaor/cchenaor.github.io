@@ -361,6 +361,9 @@ strong{
 .btn-wppc:hover strong:first-child{
   transform: translateY(-100%);
 }
+.video-texto {
+  align-items: center;
+}
 section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 60px;}
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
