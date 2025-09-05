@@ -324,9 +324,12 @@ strong{
   display: block;
   border-radius: 10px;
 }
+#contacto video .overlay{
+   background: rgba(0,0,0,0.5);
+}
 .texto-sobre-video{
   position: absolute;
-  top: 80%;
+  top: 79%;
   left: 31%;
   transform: translate(-50%, -50%);
   color: #ffffff;
@@ -340,14 +343,15 @@ strong{
   position: absolute;
   transform: translate(-50%, -50%);
   padding: 0.8em;
-  top: 90%;
-  left: 30%;
+  top: 89%;
+  left: 29%;
   background-color: #ffffff;
   width: 560px ;
   text-align: center;
   text-decoration: none;
   border-radius: 10px;
   overflow: hidden;
+  display: inline-block;
 }
 .btn-wppc:hover strong:first-child{
   transform: translateY(-100%);
