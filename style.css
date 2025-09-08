@@ -355,7 +355,7 @@ strong{
   display: inline-block;
   user-select: none;
 }
-.btn-wppc strong{
+.btn-wppc span{
   display: inline-block;
   transition: transform 0.4s, opacity 0.4s;
 }
@@ -377,4 +377,5 @@ ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
 footer { text-align: center; 
   padding: 1em; 
-  background: #e9e9e9; margin-top: 2em; align-items: center; display: flex;}
+  background: #e9e9e9; 
+  margin-top: 2em; align-items: center; display: flex; flex-direction: column;}
