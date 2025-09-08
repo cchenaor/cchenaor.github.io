@@ -359,6 +359,9 @@ strong{
   display: inline-block;
   transition: transform 0.4s, opacity 0.4s;
 }
+.btn-wppc:hover strong{
+  animation: sube-letra 0.4s forwards, baja-letra 0.4s 0.4s forwards;
+}
 .btn-wppc:hover strong:first-child{
   transform: translateY(-80%);
 }
