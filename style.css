@@ -359,11 +359,7 @@ strong{
   display: inline-block;
   transition: transform 0.4s, opacity 0.4s;
 }
-.btn-wppc:hover strong{
-  opacity: 0;
-  transform: translateY(-120%);
-}
-.btn-wppc:hover strong{
+.btn-wppc:hover span{
   animation: sube-letra 0.4s forwards, baja-letra 0.4s 0.4s forwards;
 }
 .btn-wppc:hover strong:first-child{
@@ -377,5 +373,5 @@ ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
 footer { text-align: center; 
   padding: 1em; 
-  background: #e9e9e9; 
+  background: #3a3a3a; 
   margin-top: 2em; align-items: center; display: flex; flex-direction: column;}
