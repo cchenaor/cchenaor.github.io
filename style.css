@@ -372,6 +372,16 @@ strong{
     transform: translateY(-120%);
   }
 }
+@keyframes baja-letra {
+  from {
+    opacity: 0;
+    transform: translateY(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .btn-wppc:hover strong:first-child{
   transform: translateY(-80%);
 }
@@ -388,5 +398,8 @@ footer {
   margin-top: 2em; 
   align-items: center; display: flex; flex-direction: column;}
 footer p{
+  color: #ffffff;
+}
+footer ul{
   color: #ffffff;
 }
