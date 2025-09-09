@@ -382,9 +382,15 @@ strong{
     transform: translateY(0);
   }
 }
-.btn-wppc:hover strong:first-child{
-  transform: translateY(-80%);
-}
+.boton-letras:hover span:nth-child(1) { animation-delay: 0s, 0.4s;}
+.boton-letras:hover span:nth-child(2) { animation-delay: 0.05s, 0.45s;}
+.boton-letras:hover span:nth-child(3) { animation-delay: 0.10s, 0.50s;}
+.boton-letras:hover span:nth-child(4) { animation-delay: 0.15s, 0.55s;}
+.boton-letras:hover span:nth-child(5) { animation-delay: 0.20s, 0.60s;}
+.boton-letras:hover span:nth-child(6) { animation-delay: 0.25s, 0.65s;}
+.boton-letras:hover span:nth-child(7) { animation-delay: 0.30s, 0.70s;}
+.boton-letras:hover span:nth-child(8) { animation-delay: 0.35s, 0.75s;}
+
 .video-texto {
   align-items: center;
 }
