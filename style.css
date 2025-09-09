@@ -390,14 +390,19 @@ strong{
 .btn-wppc:hover span:nth-child(6) { animation-delay: 0.25s, 0.65s;}
 .btn-wppc:hover span:nth-child(7) { animation-delay: 0.30s, 0.70s;}
 .btn-wppc:hover span:nth-child(8) { animation-delay: 0.35s, 0.75s;}
-.btn-wppc:hover span:nth-child(9) { animation-delay: 0s, 0.8s;}
-.btn-wppc:hover span:nth-child(10) { animation-delay: 0.05s, 0.85s;}
-.btn-wppc:hover span:nth-child(11) { animation-delay: 0.10s, 0.9s;}
-.btn-wppc:hover span:nth-child(12) { animation-delay: 0.15s, 0.95s;}
-.btn-wppc:hover span:nth-child(13) { animation-delay: 0.20s, 1.0s;}
-.btn-wppc:hover span:nth-child(14) { animation-delay: 0.25s, 1.05s;}
-.btn-wppc:hover span:nth-child(15) { animation-delay: 0.30s, 1.10s;}
-.btn-wppc:hover span:nth-child(16) { animation-delay: 0.35s, 1.15s;}
+.btn-wppc:hover span:nth-child(9) { animation-delay: 0.4s, 0.8s;}
+.btn-wppc:hover span:nth-child(10) { animation-delay: 0.45s, 0.85s;}
+.btn-wppc:hover span:nth-child(11) { animation-delay: 0.50s, 0.9s;}
+.btn-wppc:hover span:nth-child(12) { animation-delay: 0.55s, 0.95s;}
+.btn-wppc:hover span:nth-child(13) { animation-delay: 0.60s, 1.0s;}
+.btn-wppc:hover span:nth-child(14) { animation-delay: 0.65s, 1.05s;}
+.btn-wppc:hover span:nth-child(15) { animation-delay: 0.70s, 1.10s;}
+.btn-wppc:hover span:nth-child(16) { animation-delay: 0.75s, 1.15s;}
+.btn-wppc:hover span:nth-child(17) { animation-delay: 0.80s, 1.20s;}
+.btn-wppc:hover span:nth-child(18) { animation-delay: 0.85s, 1.25s;}
+.btn-wppc:hover span:nth-child(19) { animation-delay: 0.90s, 1.30s;}
+.btn-wppc:hover span:nth-child(20) { animation-delay: 0.95s, 1.35s;}
+.btn-wppc:hover span:nth-child(21) { animation-delay: 1.00s, 1.40s;}
 
 .video-texto {
   align-items: center;
@@ -416,4 +421,8 @@ footer p{
 }
 footer ul{
   color: #ffffff;
+}
+.pie-pagina{
+  flex-direction: row;
+  display: flex;
 }
