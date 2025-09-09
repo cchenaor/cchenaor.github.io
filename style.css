@@ -360,6 +360,10 @@ strong{
   transition: transform 0.4s, opacity 0.4s;
 }
 .btn-wppc:hover span{
+  opacity: 0;
+  transform: translateY(-120%);
+}
+.btn-wppc:hover span{
   animation: sube-letra 0.4s forwards, baja-letra 0.4s 0.4s forwards;
 }
 .btn-wppc:hover strong:first-child{
@@ -372,6 +376,6 @@ section {margin-top: 0; padding: 1em 2em ;background: #fff; scroll-margin-top: 6
 ul { list-style: none; padding: 0; }
 li { margin-bottom: 0em; }
 footer { text-align: center; 
-  padding: 1em; 
+  padding: 2em; 
   background: #3a3a3a; 
   margin-top: 2em; align-items: center; display: flex; flex-direction: column;}
