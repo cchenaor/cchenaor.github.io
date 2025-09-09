@@ -330,7 +330,7 @@ strong{
 }
 .texto-sobre-video{
   position: absolute;
-  top: 78%;
+  top: 73%;
   left: 31%;
   transform: translate(-50%, -50%);
   color: #ffffff;
@@ -344,7 +344,7 @@ strong{
   position: relative;
   transform: translate(-50%, -50%);
   padding: 0.8em;
-  top: 88%;
+  top: 83%;
   left: 29%;
   background-color: #ffffff;
   width: 560px ;
@@ -358,11 +358,8 @@ strong{
 .btn-wppc span{
   display: inline-block;
   transition: transform 0.4s, opacity 0.4s;
+  color: #000000;
 }
-/*.btn-wppc:hover span{
-  opacity: 0;
-  transform: translateY(-120%);
-}*/
 .btn-wppc:hover span{
   animation: sube-letra 0.4s forwards, baja-letra 0.4s 0.4s forwards;
 }
