@@ -344,8 +344,8 @@ strong{
   position: relative;
   transform: translate(-50%, -50%);
   padding: 0.8em;
-  top: 83%;
-  left: 29%;
+  top: 78%;
+  left: 28%;
   background-color: #ffffff;
   width: 560px ;
   text-align: center;
@@ -416,7 +416,7 @@ footer {
 footer p{
   color: #ffffff;
 }
-footer ul{
+footer ul.menu li a {
   color: #ffffff;
 }
 .pie-pagina{
