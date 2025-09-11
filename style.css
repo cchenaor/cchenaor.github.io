@@ -420,7 +420,7 @@ footer ul.menu li a {
   color: #ffffff;
 }
 footer ul.menu li a:hover{
-  color: #394aff;
+  color: #394aff !important;
 }
 .pie-pagina{
   flex-direction: row;
