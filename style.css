@@ -330,7 +330,7 @@ strong{
 }
 .texto-sobre-video{
   position: absolute;
-  top: 80%;
+  top: 81%;
   left: 31%;
   transform: translate(-50%, -50%);
   color: #ffffff;
@@ -344,10 +344,10 @@ strong{
   position: absolute;
   transform: translate(-50%, -50%);
   padding: 0.8em;
-  top: 91%;
-  left: 30%;
+  top: 90%;
+  left: 29%;
   background-color: #ffffff;
-  width: 560px ;
+  width: 561px ;
   text-align: center;
   text-decoration: none;
   border-radius: 10px;
@@ -425,4 +425,5 @@ footer ul.menu li a {
 .pie-pagina{
   flex-direction: row;
   display: flex;
+  align-items: center;
 }
