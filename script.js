@@ -1,274 +1,326 @@
-// ========================================
-// MENÚ HAMBURGUESA - MOBILE
-// ========================================
+/* ============================================
+   SCRIPT.JS - ARACAFÉ
+   Funcionalidad interactiva del sitio
+   ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('nav-mobile');
-    const navMobileLinks = document.querySelectorAll('.nav-link-mobile');
-    
-    // Alternar menú al hacer clic en hamburguesa
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMobile.classList.toggle('active');
-    });
-    
-    // Cerrar menú al hacer clic en un enlace
-    navMobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMobile.classList.remove('active');
-        });
-    });
-    
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = navMobile.contains(event.target);
-        const isClickOnHamburger = hamburger.contains(event.target);
-        
-        if (!isClickInsideNav && !isClickOnHamburger && navMobile.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMobile.classList.remove('active');
-        }
+// ============================================
+// 1. MENÚ HAMBURGUESA
+// ============================================
+
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navMobile = document.getElementById('nav-mobile');
+const navMobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+/**
+ * Abre/cierra el menú móvil al hacer clic en el botón hamburguesa
+ */
+function toggleMobileMenu() {
+    hamburgerBtn.classList.toggle('active');
+    navMobile.classList.toggle('active');
+}
+
+hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+/**
+ * Cierra el menú móvil cuando se hace clic en un enlace
+ */
+navMobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMobile.classList.remove('active');
     });
 });
 
-// ========================================
-// SCROLL SUAVE (SMOOTH SCROLL)
-// ========================================
+/**
+ * Cierra el menú móvil al hacer clic fuera de él
+ */
+document.addEventListener('click', (e) => {
+    const isClickInsideNav = navMobile.contains(e.target);
+    const isClickOnHamburger = hamburgerBtn.contains(e.target);
+    
+    if (!isClickInsideNav && !isClickOnHamburger && navMobile.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        navMobile.classList.remove('active');
+    }
+});
 
-// Los enlaces ya tienen href="#id" por lo que el navegador realiza
-// scroll suave automáticamente gracias a "scroll-behavior: smooth" en CSS.
-// Sin embargo, aquí agregamos lógica adicional para mayor control si es necesario.
+// ============================================
+// 2. SCROLL SUAVE PARA ENLACES DE MENÚ
+// ============================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+/**
+ * Implementa scroll suave personalizado para mejorar la experiencia
+ * (complementa el scroll-behavior: smooth del CSS)
+ */
+const allNavLinks = document.querySelectorAll('a[href^="#"]');
+
+allNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         
-        // Solo procesar si el href no es solo "#"
-        if (href !== '#' && href !== '') {
+        // Si es un enlace interno válido
+        if (href !== '#' && href.startsWith('#')) {
             const targetId = href.substring(1);
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                // Scroll con offset para considerar el header fijo
-                const offsetTop = targetElement.offsetTop - 70;
+                // Prevenir el comportamiento por defecto
+                e.preventDefault();
+                
+                // Scroll suave hacia el elemento (nativo del navegador)
+                // El navegador moderno maneja esto con scroll-behavior: smooth
+                // pero podemos añadir offset para el header sticky
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
                 window.scrollTo({
-                    top: offsetTop,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
-                
-                // Prevenir comportamiento por defecto si es necesario
-                // e.preventDefault();
             }
         }
     });
 });
 
-// ========================================
-// ANIMACIONES AL HACER SCROLL
-// ========================================
+// ============================================
+// 3. ANIMACIONES AL SCROLL (Intersection Observer)
+// ============================================
 
-// Usar Intersection Observer para activar animaciones cuando
-// los elementos entran en el viewport
+/**
+ * Detecta cuando las secciones y tarjetas entran en el viewport
+ * y añade animaciones de aparición suave
+ */
 
-function setupScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                // Opcional: remover observer después de que se haya animado
-                // observer.unobserve(entry.target);
+const observerOptions = {
+    threshold: 0.15,      // Activar cuando el 15% del elemento sea visible
+    rootMargin: '0px 0px -50px 0px'  // Pequeño margen para optimizar performance
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Añadir clase visible para activar animación
+            if (entry.target.classList.contains('fade-in')) {
+                entry.target.classList.add('section-visible');
             }
+            
+            if (entry.target.classList.contains('slide-in')) {
+                entry.target.classList.add('card-visible');
+            }
+            
+            // Opcional: dejar de observar después de animar
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observar todas las secciones y tarjetas con clase fade-in o slide-in
+const animatedElements = document.querySelectorAll('.fade-in, .slide-in');
+animatedElements.forEach(element => {
+    observer.observe(element);
+});
+
+// ============================================
+// 4. EFECTO STAGGER EN TARJETAS
+// ============================================
+
+/**
+ * Añade delay progresivo a las tarjetas para un efecto cascada
+ */
+
+// Tarjetas de fincas
+const fincaCards = document.querySelectorAll('.finca-card');
+fincaCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+});
+
+// Pasos del proceso
+const procesosSteps = document.querySelectorAll('.proceso-step');
+procesosSteps.forEach((step, index) => {
+    step.style.animationDelay = `${index * 0.1}s`;
+});
+
+// Tarjetas de presentaciones
+const presentacionCards = document.querySelectorAll('.presentacion-card');
+presentacionCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+});
+
+// ============================================
+// 5. FORMULARIO DE CONTACTO
+// ============================================
+
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obtener datos del formulario
+        const formData = {
+            nombre: document.getElementById('nombre').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            empresa: document.getElementById('empresa').value.trim(),
+            pais: document.getElementById('pais').value.trim(),
+            mensaje: document.getElementById('mensaje').value.trim()
+        };
+        
+        // Validación básica
+        if (!formData.nombre || !formData.email || !formData.mensaje) {
+            alert('Por favor, completa los campos obligatorios: Nombre, Correo y Mensaje.');
+            return;
+        }
+        
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            alert('Por favor, ingresa un correo electrónico válido.');
+            return;
+        }
+        
+        // IMPORTANTE: Aquí es donde integrarías tu backend
+        // Ejemplo con FormSubmit.co (servicio gratuito):
+        // Simplemente cambia el atributo "action" del formulario HTML a:
+        // action="https://formsubmit.co/tu-email@aracafe.com"
+        
+        // O integra con tu API propia:
+        /*
+        fetch('https://tu-servidor.com/api/contacto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
+            contactForm.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar el mensaje. Intenta de nuevo.');
         });
-    }, observerOptions);
-    
-    // Observar elementos con clase fade-in
-    document.querySelectorAll('.fade-in').forEach(element => {
-        observer.observe(element);
+        */
+        
+        // Por ahora, mostrar mensaje de confirmación local
+        showFormSuccess();
+        contactForm.reset();
     });
 }
 
-// Ejecutar cuando el DOM está listo
-document.addEventListener('DOMContentLoaded', setupScrollAnimations);
-
-// ========================================
-// AÑO ACTUAL EN FOOTER
-// ========================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-});
-
-// ========================================
-// MANEJO DEL FORMULARIO DE CONTACTO
-// ========================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contacto-form');
+/**
+ * Muestra un mensaje de confirmación después de enviar el formulario
+ */
+function showFormSuccess() {
+    const formContainer = document.querySelector('.contact-form-container');
+    const successMessage = document.createElement('div');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Recopilar datos del formulario
-            const formData = {
-                nombre: document.getElementById('nombre').value,
-                email: document.getElementById('email').value,
-                empresa: document.getElementById('empresa').value,
-                pais: document.getElementById('pais').value,
-                mensaje: document.getElementById('mensaje').value
-            };
-            
-            // Opción 1: Usar mailto (redirección a cliente de email)
-            // Descomenta la siguiente línea para usar mailto
-            /*
-            const mailtoLink = `mailto:contacto@aracafe.com?subject=Nueva consulta de ${formData.nombre}&body=${encodeURIComponent(
-                `Nombre: ${formData.nombre}\nEmail: ${formData.email}\nEmpresa: ${formData.empresa}\nPaís: ${formData.pais}\n\nMensaje:\n${formData.mensaje}`
-            )}`;
-            window.location.href = mailtoLink;
-            */
-            
-            // Opción 2: Enviar a servicio externo (ejemplo con Formspree)
-            // Descomenta y reemplaza YOUR_FORM_ID con tu ID de Formspree
-            /*
-            fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            }).then(response => {
-                if (response.ok) {
-                    alert('¡Gracias! Tu consulta ha sido enviada exitosamente.');
-                    contactForm.reset();
-                } else {
-                    alert('Hubo un error al enviar el formulario. Intenta nuevamente.');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('Error de conexión. Intenta nuevamente más tarde.');
-            });
-            */
-            
-            // Opción 3: Mostrar mensaje de éxito simulado (para desarrollo)
-            console.log('Datos del formulario:', formData);
-            alert('¡Gracias por tu consulta! Nos pondremos en contacto pronto.\n\nNota: Este es un sitio de demostración. Para integración real, conecta el formulario a tu servidor o servicio de email.');
-            contactForm.reset();
-        });
-    }
-});
+    successMessage.style.cssText = `
+        background-color: rgba(78, 91, 83, 0.1);
+        border-left: 4px solid rgb(78, 91, 83);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-top: 1.5rem;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    successMessage.innerHTML = `
+        <p style="color: rgb(78, 91, 83); margin: 0; font-weight: 500;">
+            ✓ ¡Mensaje recibido!
+        </p>
+        <p style="color: rgb(78, 91, 83); margin: 0.5rem 0 0 0; font-size: 0.95rem;">
+            Nos pondremos en contacto pronto. Gracias por interesarte en Aracafé.
+        </p>
+    `;
+    
+    formContainer.appendChild(successMessage);
+    
+    // Remover el mensaje después de 5 segundos
+    setTimeout(() => {
+        successMessage.style.animation = 'fadeIn 0.3s ease reverse';
+        setTimeout(() => successMessage.remove(), 300);
+    }, 5000);
+}
 
-// ========================================
-// EFECTOS ADICIONALES (OPCIONAL)
-// ========================================
+// ============================================
+// 6. AJUSTE DEL HEADER AL HACER SCROLL
+// ============================================
 
-// Efecto de parallax suave en el hero
-window.addEventListener('scroll', function() {
-    const hero = document.querySelector('.hero-background');
-    if (hero) {
-        const scrollPosition = window.pageYOffset;
-        hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-    }
-});
+/**
+ * Añade efecto visual al header cuando se hace scroll
+ */
 
-// Mantener el header visible con transición al hacer scroll
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
 
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset;
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Opcional: agregar sombra al header cuando se scrollea
-    if (currentScroll > 10) {
-        header.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.15)';
+    if (scrollTop > 100) {
+        // Añadir sombreado cuando se baja
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.12)';
     } else {
-        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        // Sombreado ligero en la parte superior
+        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
     }
     
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Para móvil
 });
 
-// ========================================
-// VALIDACIÓN BÁSICA DE FORMULARIO
-// ========================================
+// ============================================
+// 7. SCROLL A LA SECCIÓN ACTIVA (OPCIONAL)
+// ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    const emailInput = document.getElementById('email');
+/**
+ * Highlight el enlace del menú según la sección visible (opcional)
+ * Descomentar si se desea implementar
+ */
+
+/*
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-mobile-link');
     
-    if (emailInput) {
-        emailInput.addEventListener('blur', function() {
-            const email = this.value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (email && !emailRegex.test(email)) {
-                this.style.borderColor = '#ff6b6b';
-                this.title = 'Por favor ingresa un email válido';
-            } else {
-                this.style.borderColor = '';
-                this.title = '';
-            }
-        });
-    }
-});
-
-// ========================================
-// ACTIVAR BOTÓN DE ENVÍO SOLO CON CAMPOS COMPLETOS
-// ========================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contacto-form');
-    const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    let currentSection = '';
     
-    if (contactForm && submitButton) {
-        const inputs = contactForm.querySelectorAll('input, textarea');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 200;
+        const sectionHeight = section.clientHeight;
         
-        function checkFormValid() {
-            let isValid = true;
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                }
-            });
-            
-            // Validación adicional para email
-            const emailInput = contactForm.querySelector('#email');
-            if (emailInput && emailInput.value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailInput.value)) {
-                    isValid = false;
-                }
-            }
-            
-            submitButton.style.opacity = isValid ? '1' : '0.6';
-            submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
+        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
         }
-        
-        inputs.forEach(input => {
-            input.addEventListener('input', checkFormValid);
-            input.addEventListener('change', checkFormValid);
-        });
-        
-        // Verificación inicial
-        checkFormValid();
-    }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+            link.style.borderBottomColor = 'rgb(191, 153, 84)';
+            link.style.color = 'rgb(191, 153, 84)';
+        }
+    });
 });
+*/
 
-// ========================================
-// LOG DE EVENTOS (OPCIONAL - PARA DEBUGGING)
-// ========================================
+// ============================================
+// 8. COMPATIBILIDAD Y POLYFILLS
+// ============================================
 
-console.log('✓ Script.js cargado correctamente');
-console.log('✓ Menú hamburguesa: disponible');
-console.log('✓ Scroll suave: habilitado');
-console.log('✓ Animaciones al scroll: activas');
-console.log('✓ Validación de formulario: activa');
+/**
+ * Polyfill para smooth scroll behavior en navegadores antiguos
+ */
+if (!('scrollBehavior' in document.documentElement.style)) {
+    console.log('Smooth scroll no soportado. Usando polyfill.');
+    // En navegadores sin soporte, el scroll será instantáneo (fallback aceptable)
+}
+
+// ============================================
+// 9. INICIALIZACIÓN
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Aracafé - Sitio cargado exitosamente ✓');
+    console.log('Navegación, animaciones y formulario listos.');
+});
