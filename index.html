@@ -1,673 +1,416 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOC-IVR-001 — Adición de Intención IVR: Central de Monitoreo y Hurtos</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Documentación IVR - Satrack</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --satrack-blue: #0B3C95;
+            --satrack-blue-dark: #072866;
+            --satrack-yellow: #FEC208;
+            --bg-light: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --shadow: 0 10px 15px -3px rgba(11, 60, 149, 0.05), 0 4px 6px -4px rgba(11, 60, 149, 0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(11, 60, 149, 0.12), 0 8px 10px -6px rgba(11, 60, 149, 0.08);
+        }
 
-  /* ==========================================================================
-     RESET Y BASE
-     ========================================================================== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
 
-  html {
-    -webkit-font-smoothing: antialiased;
-  }
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
-    background-color: #EEF1F5;
-    color: #2D3748;
-    line-height: 1.65;
-    font-size: 14px;
-  }
+        /* Header / Navbar */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 3px solid var(--satrack-yellow);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-  /* ==========================================================================
-     CONFIGURACIÓN DE IMPRESIÓN / PDF (A4)
-     ========================================================================== */
-  @page {
-    size: A4;
-    margin: 14mm 12mm;
-  }
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  @media print {
-    body {
-      background-color: #FFFFFF;
-    }
-    .page-shell {
-      box-shadow: none !important;
-      margin: 0 !important;
-      max-width: 100% !important;
-      border-radius: 0 !important;
-    }
-    .no-print {
-      display: none !important;
-    }
-    .timeline-step, .meta-panel, .section, .deploy-card {
-      break-inside: avoid;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-  }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
 
-  /* ==========================================================================
-     CONTENEDOR PRINCIPAL
-     ========================================================================== */
-  .page-shell {
-    max-width: 850px;
-    margin: 32px auto;
-    background: #FFFFFF;
-    box-shadow: 0 4px 24px rgba(11, 60, 149, 0.10);
-    border-radius: 4px;
-    overflow: hidden;
-  }
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
 
-  .page-inner {
-    padding: 0 46px 50px 46px;
-  }
+        .divider {
+            height: 28px;
+            width: 1px;
+            background-color: var(--border-color);
+        }
 
-  /* ==========================================================================
-     MEMBRETE / ENCABEZADO FORMAL
-     ========================================================================== */
-  .letterhead {
-    background: #0B3C95;
-    padding: 26px 46px 22px 46px;
-    position: relative;
-    border-bottom: 6px solid #FEC208;
-  }
+        .portal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--satrack-blue);
+            letter-spacing: -0.3px;
+        }
 
-  .letterhead-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 22px;
-  }
+        /* Hero / Banner Principal */
+        .hero {
+            background: linear-gradient(135deg, var(--satrack-blue) 0%, var(--satrack-blue-dark) 100%);
+            color: white;
+            padding: 3.5rem 2rem 5rem 2rem;
+            text-align: center;
+        }
 
-  .company-block {
-    color: #FFFFFF;
-  }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-  .company-name {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
 
-  .company-sub {
-    font-size: 11px;
-    color: #C7D6F0;
-    margin-top: 2px;
-    letter-spacing: 0.3px;
-  }
+        .hero p {
+            font-size: 1.05rem;
+            color: #E2E8F0;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
 
-  .doc-badge {
-    background: #FEC208;
-    color: #0B3C95;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.6px;
-    padding: 6px 14px;
-    border-radius: 3px;
-    white-space: nowrap;
-  }
+        /* Buscador en tiempo real */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-  .doc-title {
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.3;
-    max-width: 640px;
-  }
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.2rem 1rem 3.2rem;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
 
-  .doc-title-eyebrow {
-    display: block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #FEC208;
-    margin-bottom: 8px;
-  }
+        .search-input:focus {
+            box-shadow: 0 4px 25px rgba(254, 194, 8, 0.4);
+        }
 
-  /* ==========================================================================
-     TABLA DE METADATOS
-     ========================================================================== */
-  .meta-panel {
-    margin-top: -22px;
-    margin-bottom: 34px;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    border-radius: 6px;
-    padding: 18px 22px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    position: relative;
-    z-index: 2;
-  }
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+        /* Rejilla de Proyectos */
+        main {
+            max-width: 1200px;
+            margin: -2.5rem auto 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            flex: 1;
+        }
 
-  .meta-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #718096;
-    font-weight: 700;
-  }
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
 
-  .meta-value {
-    font-size: 13px;
-    color: #1A202C;
-    font-weight: 600;
-  }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--satrack-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-  .status-badge {
-    display: inline-block;
-    background: #FFF3D6;
-    color: #92600A;
-    border: 1px solid #FEC208;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    width: fit-content;
-  }
+        .badge-count {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
 
-  /* ==========================================================================
-     SECCIONES / TIPOGRAFÍA DE CONTENIDO
-     ========================================================================== */
-  .section {
-    margin-bottom: 36px;
-  }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
 
-  h2 {
-    font-size: 16px;
-    color: #0B3C95;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-    border-left: 5px solid #0B3C95;
-    padding-left: 10px;
-    line-height: 1.4;
-    margin-bottom: 16px;
-  }
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
 
-  h3 {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #0B3C95;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 8px;
-  }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--satrack-blue);
+            transition: all 0.3s ease;
+        }
 
-  p {
-    color: #2D3748;
-    font-size: 13.5px;
-    margin-bottom: 10px;
-  }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
 
-  .section-number {
-    color: #A0AEC0;
-    font-weight: 700;
-    margin-right: 6px;
-  }
+        .project-card:hover::before {
+            background-color: var(--satrack-yellow);
+            width: 6px;
+        }
 
-  /* ==========================================================================
-     BLOQUE CONTEXTO — AS-IS / TO-BE
-     ========================================================================== */
-  .context-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 12px;
-  }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
 
-  .context-card {
-    border-radius: 6px;
-    padding: 16px 18px;
-    border: 1px solid #E2E8F0;
-  }
+        .doc-code {
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--satrack-blue);
+            background-color: #EFF6FF;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #DBEAFE;
+        }
 
-  .context-card.as-is {
-    background: #FBF7F0;
-    border-left: 4px solid #C05621;
-  }
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
 
-  .context-card.to-be {
-    background: #F0F6FC;
-    border-left: 4px solid #0B3C95;
-  }
+        .status-dev {
+            background-color: #FEF3C7;
+            color: #B45309;
+        }
 
-  .context-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: inline-block;
-  }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
 
-  .context-card.as-is .context-tag { color: #C05621; }
-  .context-card.to-be .context-tag { color: #0B3C95; }
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
 
-  .context-card p {
-    font-size: 12.8px;
-    margin-bottom: 0;
-  }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
 
-  .context-arrow-row {
-    text-align: center;
-    color: #A0AEC0;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin: 10px 0 2px 0;
-  }
+        .tag {
+            font-size: 0.75rem;
+            background-color: #F1F5F9;
+            color: #475569;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
 
-  /* ==========================================================================
-     BLOQUE NLU / INTENCIÓN
-     ========================================================================== */
-  .intent-box {
-    background: #0B3C95;
-    color: #FFFFFF;
-    border-radius: 6px;
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
+        .card-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  .intent-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: #AEC5EC;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--satrack-blue);
+            color: white;
+            padding: 0.55rem 1.1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
 
-  .intent-name {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-  }
+        .btn-view:hover {
+            background-color: var(--satrack-blue-dark);
+            color: var(--satrack-yellow);
+        }
 
-  /* ==========================================================================
-     NUBE DE ETIQUETAS (KEYWORDS)
-     ========================================================================== */
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .tag-pill {
-    background: #EDF1F7;
-    border: 1px solid #DCE3ED;
-    color: #3D4A5C;
-    font-size: 11.5px;
-    font-weight: 600;
-    padding: 6px 13px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-
-  /* ==========================================================================
-     LÍNEA DE TIEMPO / SECUENCIA DEL IVR
-     (construida con tablas para máxima compatibilidad con render de PDF)
-     ========================================================================== */
-  .timeline-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .timeline-table td {
-    vertical-align: top;
-    padding: 0;
-  }
-
-  .tl-connector-cell {
-    width: 46px;
-    text-align: center;
-  }
-
-  .tl-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #0B3C95;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-    line-height: 32px;
-    margin: 0 auto;
-  }
-
-  .tl-line {
-    width: 2px;
-    height: 44px;
-    margin: 4px auto 0 auto;
-    border-left: 2px dashed #CBD5E0;
-  }
-
-  .tl-content-cell {
-    padding: 2px 0 30px 16px;
-  }
-
-  .tl-step-title {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: #1A202C;
-    margin-bottom: 5px;
-  }
-
-  .tl-step-desc {
-    font-size: 12.8px;
-    color: #4A5568;
-  }
-
-  .tl-audio-tag {
-    display: inline-block;
-    margin-top: 6px;
-    background: #FFF9E6;
-    border: 1px solid #FEC208;
-    color: #7A5B00;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 4px;
-  }
-
-  /* ==========================================================================
-     PLAN DE DESPLIEGUE
-     ========================================================================== */
-  .deploy-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .deploy-card {
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    border-radius: 6px;
-    padding: 16px 18px;
-  }
-
-  .deploy-card.rollback {
-    border-top: 4px solid #FEC208;
-  }
-
-  .deploy-card.smoke {
-    border-top: 4px solid #0B3C95;
-  }
-
-  .deploy-card h3 {
-    margin-bottom: 10px;
-  }
-
-  .deploy-card ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .deploy-card li {
-    font-size: 12.6px;
-    color: #4A5568;
-    padding-left: 16px;
-    position: relative;
-    margin-bottom: 7px;
-  }
-
-  .deploy-card li::before {
-    content: "▪";
-    color: #0B3C95;
-    position: absolute;
-    left: 0;
-    font-size: 11px;
-    top: 1px;
-  }
-
-  .rollback-time {
-    display: inline-block;
-    margin-top: 4px;
-    background: #0B3C95;
-    color: #FFFFFF;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 4px;
-  }
-
-  /* ==========================================================================
-     PIE DE PÁGINA DEL DOCUMENTO
-     ========================================================================== */
-  .doc-footer {
-    margin-top: 40px;
-    padding-top: 16px;
-    border-top: 1px solid #E2E8F0;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10.5px;
-    color: #A0AEC0;
-    letter-spacing: 0.3px;
-  }
-
-</style>
+        footer {
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
 
-<div class="page-shell">
-
-  <!-- ============================================================
-       MEMBRETE CORPORATIVO
-       ============================================================ -->
-  <header class="letterhead">
-    <div class="letterhead-top">
-      <div class="company-block">
-        <div class="company-name">SATRACK S.A.S.</div>
-        <div class="company-sub">Ingeniería de Clientes — Transformación Digital</div>
-      </div>
-      <div class="doc-badge">DOC-IVR-001</div>
-    </div>
-    <h1 class="doc-title">
-      <span class="doc-title-eyebrow">Requerimiento Técnico · IVR Corporativo</span>
-      Adición de Intención IVR: Central de Monitoreo y Hurtos
-    </h1>
-  </header>
-
-  <div class="page-inner">
-
-    <!-- ============================================================
-         TABLA DE METADATOS
-         ============================================================ -->
-    <section class="meta-panel">
-      <div class="meta-item">
-        <span class="meta-label">Responsable</span>
-        <span class="meta-value">Equipo TD — Satrack</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Fecha</span>
-        <span class="meta-value">17 de julio de 2026</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Canal</span>
-        <span class="meta-value">IVR — Línea de atención telefónica</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Estado</span>
-        <span class="status-badge">En definición</span>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         1. CONTEXTO
-         ============================================================ -->
-    <section class="section">
-      <h2><span class="section-number">01.</span>Contexto del Requerimiento</h2>
-      <p>
-        Actualmente, la opción 4 del IVR no direcciona correctamente las llamadas relacionadas con
-        eventos de seguridad, monitoreo y posibles hurtos vehiculares. Esto obliga al usuario a transitar
-        por el flujo general de atención antes de recibir soporte especializado, incrementando los tiempos
-        de respuesta en situaciones potencialmente críticas.
-      </p>
-
-      <div class="context-grid">
-        <div class="context-card as-is">
-          <span class="context-tag">As-Is · Estado Actual</span>
-          <p>
-            Las llamadas relacionadas con eventos de seguridad se desvían erróneamente al SAC
-            (Servicio de Atención al Cliente) general a través de la opción 4, sin distinción del tipo
-            de necesidad del cliente.
-          </p>
-        </div>
-        <div class="context-card to-be">
-          <span class="context-tag">To-Be · Estado Propuesto</span>
-          <p>
-            La llamada se enruta directamente a la Central de Monitoreo. Previo a la transferencia,
-            se reproduce un audio de autogestión con información de utilidad inmediata para el cliente.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         2. INTENCIÓN NLU Y PALABRAS CLAVE
-         ============================================================ -->
-    <section class="section">
-      <h2><span class="section-number">02.</span>Intención NLU y Entrenamiento</h2>
-
-      <div class="intent-box">
-        <div>
-          <div class="intent-label">Nombre de la intención</div>
-          <div class="intent-name">intencion_monitoreo_hurtos</div>
-        </div>
-      </div>
-
-      <h3>Palabras clave de entrenamiento</h3>
-      <div class="tag-cloud">
-        <span class="tag-pill">central de monitoreo</span>
-        <span class="tag-pill">botón de pánico</span>
-        <span class="tag-pill">desconexión de batería</span>
-        <span class="tag-pill">apagado de vehículo</span>
-        <span class="tag-pill">encendido de vehículo</span>
-        <span class="tag-pill">apertura de caja fuerte</span>
-        <span class="tag-pill">apertura de puerta</span>
-        <span class="tag-pill">robo de vehículo</span>
-        <span class="tag-pill">hurto</span>
-        <span class="tag-pill">apoyo en gestión de alarmas</span>
-        <span class="tag-pill">tips de prevención en seguridad</span>
-        <span class="tag-pill">preventivo</span>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         3. SECUENCIA DEL FLUJO IVR
-         ============================================================ -->
-    <section class="section">
-      <h2><span class="section-number">03.</span>Secuencia del Flujo IVR</h2>
-
-      <table class="timeline-table">
-        <tr>
-          <td class="tl-connector-cell">
-            <div class="tl-circle">1</div>
-            <div class="tl-line"></div>
-          </td>
-          <td class="tl-content-cell">
-            <div class="tl-step-title">Captura de Intención</div>
-            <div class="tl-step-desc">
-              El motor de Speech Analytics identifica la intención del cliente a partir de las
-              palabras clave configuradas, clasificando la llamada bajo
-              <strong>intencion_monitoreo_hurtos</strong>.
+    <!-- Header / Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="brand-container">
+                <!-- Sube el archivo de imagen del logo a tu repositorio de GitHub como 'logo.png' -->
+                <img src="logo.png" alt="Satrack Logo" class="logo-img">
+                <div class="divider"></div>
+                <span class="portal-title">Repositorio de Documentación IVR & IA</span>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="tl-connector-cell">
-            <div class="tl-circle">2</div>
-            <div class="tl-line"></div>
-          </td>
-          <td class="tl-content-cell">
-            <div class="tl-step-title">Bloque de Autogestión</div>
-            <div class="tl-step-desc">
-              Se reproduce un audio informativo con tips de prevención en seguridad antes de continuar
-              con el enrutamiento, brindando valor inmediato al cliente mientras se gestiona la transferencia.
+        </div>
+    </header>
+
+    <!-- Banner de Encabezado -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Documentación de Proyectos IVR</h1>
+            <p>Portal centralizado para el diseño, flujos y arquitectura de enrutamiento del agente conversacional de voz.</p>
+            
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar por título, código o palabra clave..." onkeyup="filterProjects()">
             </div>
-            <div class="tl-audio-tag">AUDIO_TIPS_PREVENCION_V1.wav</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="tl-connector-cell">
-            <div class="tl-circle">3</div>
-          </td>
-          <td class="tl-content-cell">
-            <div class="tl-step-title">Enrutamiento Final</div>
-            <div class="tl-step-desc">
-              La llamada se transfiere directamente a la cola de la Central de Monitoreo, eliminando
-              el paso intermedio por el SAC general y reduciendo el tiempo de respuesta ante eventos críticos.
-            </div>
-          </td>
-        </tr>
-      </table>
+        </div>
     </section>
 
-    <!-- ============================================================
-         4. PLAN DE DESPLIEGUE
-         ============================================================ -->
-    <section class="section">
-      <h2><span class="section-number">04.</span>Plan de Despliegue</h2>
-
-      <div class="deploy-grid">
-        <div class="deploy-card smoke">
-          <h3>Criterios de Pruebas de Humo</h3>
-          <ul>
-            <li>Validar la correcta clasificación de la intención con las palabras clave definidas.</li>
-            <li>Confirmar reproducción completa del audio AUDIO_TIPS_PREVENCION_V1.wav sin cortes.</li>
-            <li>Verificar el enrutamiento efectivo hacia la cola de la Central de Monitoreo.</li>
-            <li>Confirmar que no se generen desvíos residuales hacia el SAC general.</li>
-          </ul>
+    <!-- Listado de Proyectos -->
+    <main>
+        <div class="controls-bar">
+            <div class="section-title">
+                <i class="fa-solid fa-folder-open"></i> Proyectos Documentados
+                <span class="badge-count" id="projectCount">1 Proyecto</span>
+            </div>
         </div>
-        <div class="deploy-card rollback">
-          <h3>Plan de Rollback</h3>
-          <ul>
-            <li>Reversión inmediata a la configuración anterior de la opción 4 del IVR.</li>
-            <li>Restauración del enrutamiento previo hacia el SAC general como contingencia.</li>
-            <li>Notificación a Equipo TD y a la Central de Monitoreo sobre la reversión aplicada.</li>
-          </ul>
-          <span class="rollback-time">Tiempo estimado &lt; 5 minutos</span>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============================================================
-         PIE DE PÁGINA
-         ============================================================ -->
-    <footer class="doc-footer">
-      <span>Satrack S.A.S. — Documento de uso interno</span>
-      <span>DOC-IVR-001 · Rev. 1.0</span>
+        <div class="projects-grid" id="projectsGrid">
+
+            <!-- TARJETA PROYECTO 1 -->
+            <div class="project-card" data-keywords="monitoreo hurtos ivr opcion 4 sac wolkvox nlu alarma pánico">
+                <div>
+                    <div class="card-header">
+                        <span class="doc-code">DOC-IVR-001</span>
+                        <span class="status-badge status-dev">En Desarrollo</span>
+                    </div>
+                    <h2 class="card-title">Central de Monitoreo y Hurtos</h2>
+                    <p class="card-description">
+                        Integración de la nueva intención en la Opción 4 (SAC) para el desvío automático de llamadas de emergencia, botones de pánico y hurtos directamente hacia la Central de Monitoreo.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">IVR Voice</span>
+                        <span class="tag">Wolkvox NLU</span>
+                        <span class="tag">Speech Analytics</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="meta-date"><i class="fa-regular fa-calendar"></i> Jul 2026</span>
+                    <!-- Apunta exactamente al nombre del HTML de la documentación del proyecto -->
+                    <a href="documentacion_ivr_satrack.html" class="btn-view" target="_blank">
+                        Ver Doc <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Satrack S.A.S. — Portal de Ingeniería de Clientes</p>
     </footer>
 
-  </div>
-</div>
+    <!-- Script de Filtro Interactivo -->
+    <script>
+        function filterProjects() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const grid = document.getElementById('projectsGrid');
+            const cards = grid.getElementsByClassName('project-card');
+            let visibleCount = 0;
 
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const title = card.querySelector('.card-title').innerText.toLowerCase();
+                const code = card.querySelector('.doc-code').innerText.toLowerCase();
+                const description = card.querySelector('.card-description').innerText.toLowerCase();
+                const keywords = card.getAttribute('data-keywords') || '';
+
+                if (title.includes(input) || code.includes(input) || description.includes(input) || keywords.includes(input)) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            }
+            document.getElementById('projectCount').innerText = `${visibleCount} Proyecto${visibleCount !== 1 ? 's' : ''}`;
+        }
+    </script>
 </body>
 </html>
