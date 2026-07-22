@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Transformación Digital - Satrack</title>
+    <style>
+        :root {
+            --azul-oscuro: #003882;
+            --azul-marca: #0055D8;
+            --amarillo-marca: #FFC600;
+            --gris-fondo: #F4F6F9;
+            --gris-texto: #333333;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            background-color: var(--blanco);
+            width: 800px;
+            padding: 40px 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--azul-marca);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header-title h1 {
+            color: var(--azul-oscuro);
+            font-size: 20px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title h2 {
+            color: var(--azul-marca);
+            font-size: 14px;
+            margin: 5px 0 0 0;
+            font-weight: 600;
+        }
+
+        .logo {
+            height: 45px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+            background-color: #EBF2FA;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--azul-oscuro);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title {
+            color: var(--azul-oscuro);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-left: 4px solid var(--amarillo-marca);
+            padding-left: 10px;
+            margin: 25px 0 15px 0;
+        }
+
+        p, li {
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        /* Module de Datos */
+        .data-card {
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-marca));
+            color: var(--blanco);
+            border-radius: 8px;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .data-metric {
+            text-align: center;
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            padding-right: 30px;
+        }
+
+        .data-metric .number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--amarillo-marca);
+            line-height: 1;
+        }
+
+        .data-metric .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .data-details {
+            flex-grow: 1;
+            padding-left: 30px;
+        }
+
+        .data-details ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .data-details li {
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        /* Propuestas / Fases */
+        .fases-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .fase-box {
+            flex: 1;
+            border: 1px solid #D0D7DE;
+            border-radius: 6px;
+            padding: 15px;
+            background-color: #FAFAFA;
+        }
+
+        .fase-box.highlight {
+            border-color: var(--azul-marca);
+            background-color: #F0F5FF;
+        }
+
+        .fase-header {
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--azul-oscuro);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge {
+            background-color: var(--amarillo-marca);
+            color: var(--azul-oscuro);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        .badge-blue {
+            background-color: var(--azul-marca);
+            color: var(--blanco);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        /* KPIs */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .kpi-card {
+            background-color: #F4F6F9;
+            border-top: 3px solid var(--azul-marca);
+            padding: 12px;
+            text-align: center;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .kpi-card .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+        }
+
+        .kpi-card .desc {
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--azul-marca);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .print-btn:hover {
+            background-color: var(--azul-oscuro);
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                width: 100%;
+                padding: 0;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">Guardar como PDF</button>
+
+    <div class="page">
+        <!-- Encabezado con Logo -->
+        <div class="header">
+            <div class="header-title">
+                <h1>Propuesta de Transformación Digital</h1>
+                <h2>Optimización de Flujo IVR: Desvío Asincrónico de Soporte App</h2>
+            </div>
+            <!-- Logo Satrack cargado desde imagen PNG -->
+            <img src="logo.png" alt="Logo Satrack" class="logo">
+        </div>
+
+        <!-- Meta Información -->
+        <div class="meta-info">
+            <div class="meta-item"><strong>Fecha:</strong> Julio de 2026</div>
+            <div class="meta-item"><strong>Rol:</strong> Analista de Transformación Digital</div>
+            <div class="meta-item"><strong>Plataforma:</strong> wolkvox CCaaS</div>
+        </div>
+
+        <!-- Sección 1 -->
+        <div class="section-title">1. Diagnóstico de la Situación Actual</div>
+        <p>Analizando la data de tráfico del IVR del mes de junio en wolkvox (Reporte <em>Detalle de llamadas IVR</em>), se identificó un cuello de botella operativo en la atención fuera de la jornada laboral ordinaria:</p>
+        <ul>
+            <li><strong>Opción analizada:</strong> Opción 3.1 (<em>Novedades de Plataforma/App — Dificultad o no ingreso a la App</em>).</li>
+            <li><strong>Comportamiento actual:</strong> Las llamadas ingresadas en noches, domingos y festivos son enrutadas automáticamente a la <strong>Central de Monitoreo 7/24</strong>.</li>
+        </ul>
+
+        <!-- Módulo de Datos -->
+        <div class="data-card">
+            <div class="data-metric">
+                <div class="number">452</div>
+                <div class="label">Llamadas / Mes</div>
+            </div>
+            <div class="data-details">
+                <ul>
+                    <li><strong>15 llamadas promedio por noche/festivo</strong> saturando la línea de seguridad.</li>
+                    <li><strong>~7.8 horas operativas/mes</strong> consumidas en soporte básico de contraseñas.</li>
+                    <li><strong>Riesgo de SLA:</strong> Mezcla de consultas operativas con la atención de emergencias críticas (robos, alarmas y apagado de vehículos).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section-title">2. Propuesta de Solución en wolkvox Studio</div>
+        <p>Se propone intervenir la condicional de Horario No Hábil de la opción 3.1 en wolkvox Studio, sustituyendo la transferencia a un agente humano por una ruta de <strong>Autogestión Asincrónica</strong>:</p>
+
+        <div class="fases-container">
+            <div class="fase-box">
+                <div class="fase-header">
+                    <span class="badge">FASE 1</span> Audio Informativo
+                </div>
+                <p style="font-size: 12px; margin: 0;">Reprocesar la llamada con una locución que guíe al cliente a restablecer su clave en <em>satrack.com.co</em> y finalizar la llamada limpiamente sin transferir a Monitoreo.</p>
+            </div>
+            <div class="fase-box highlight">
+                <div class="fase-header">
+                    <span class="badge-blue">FASE 2</span> Disparo Omnicanal (Push)
+                </div>
+                <p style="font-size: 12px; margin: 0;">Integrar un Webhook en wolkvox Studio para gatillar un <strong>SMS o WhatsApp automático</strong> con el enlace directo de recuperación de clave al celular del cliente.</p>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section-title">3. Impacto Esperado (KPIs)</div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="value" style="color: #D32F2F;">100%</div>
+                <div class="desc">Desvío de llamadas de App en Monitoreo</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value">0 min</div>
+                <div class="desc">Riesgo de espera para emergencias de robo</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value">~7.8 hrs</div>
+                <div class="desc">Ahorro de tiempo operativo mensual</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: #2E7D32;">Inmediata</div>
+                <div class="desc">Resolución en autogestión para el cliente</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
