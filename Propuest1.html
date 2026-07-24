@@ -95,7 +95,7 @@
             line-height: 1.5;
         }
 
-        /* Module de Datos */
+        /* Módulo de Datos */
         .data-card {
             background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-marca));
             color: var(--blanco);
@@ -257,7 +257,7 @@
     <button class="print-btn" onclick="window.print()">Guardar como PDF</button>
 
     <div class="page">
-        <!-- Encabezado con Logo -->
+        <!-- Encabezado con Logo local -->
         <div class="header">
             <div class="header-title">
                 <h1>Propuesta de Transformación Digital</h1>
@@ -291,28 +291,26 @@
             <div class="data-details">
                 <ul>
                     <li><strong>15 llamadas promedio por noche/festivo</strong> saturando la línea de seguridad.</li>
-                    <li><strong>~7.8 horas operativas/mes</strong> consumidas en soporte básico de contraseñas.</li>
-                    <li><strong>Riesgo:</strong> Mezcla de consultas operativas con la atención de emergencias críticas (robos, alarmas y apagado de vehículos).</li>
+                    <li><strong>7.8 horas operativas/mes</strong> consumidas por el equipo de Monitoreo en soporte de contraseñas.</li>
+                    <li><strong>Riesgo de SLA:</strong> Mezcla de consultas operativas de bajo valor con la atención de emergencias críticas (robos, alarmas y apagado de vehículos).</li>
                 </ul>
             </div>
         </div>
 
         <!-- Sección 2 -->
         <div class="section-title">2. Propuesta de Solución en wolkvox Studio</div>
-        <p>Se propone intervenir la condicional de Horario No Hábil de la opción 3.1 en wolkvox Studio, sustituyendo la transferencia a un agente humano por una ruta de <strong>Autogestión Asincrónica</strong>:</p>
+        <p>Se propone modificar la condicional de Horario No Hábil de la opción 3.1 en wolkvox Studio para reutilizar las capacidades ya desarrolladas en la plataforma, evitando transferencias manuales a agentes de seguridad:</p>
 
         <div class="fases-container">
-            <div class="fase-box">
-                <div class="fase-header">
-                    <span class="badge">FASE 1</span> Audio Informativo
-                </div>
-                <p style="font-size: 12px; margin: 0;">Reprocesar la llamada con una locución que guíe al cliente a restablecer su clave en <em>satrack.com.co</em> y finalizar la llamada limpiamente sin transferir a Monitoreo.</p>
-            </div>
             <div class="fase-box highlight">
                 <div class="fase-header">
-                    <span class="badge-blue">FASE 2</span> Disparo Omnicanal (Push)
+                    <span class="badge-blue">SOLUCIÓN</span> Redirección al Agente Autónomo "Marco"
                 </div>
-                <p style="font-size: 12px; margin: 0;">Integrar un Webhook en wolkvox Studio para gatillar un <strong>SMS o WhatsApp automático</strong> con el enlace directo de recuperación de clave al celular del cliente.</p>
+                <p style="font-size: 12.5px; margin: 0;">
+                    En lugar de enrutar a Monitoreo 7/24, conectar la opción 3.1 en horario no hábil directamente con el flujo del <strong>Agente Conversacional IA (Marco)</strong>.
+                    <br><br>
+                    <strong>Efectividad:</strong> El cliente ingresa al flujo existente de Marco, el cual envía de manera automatizada un enlace a WhatsApp para que el usuario restablezca su contraseña por autogestión en caliente.
+                </p>
             </div>
         </div>
 
@@ -328,12 +326,12 @@
                 <div class="desc">Riesgo de espera para emergencias de robo</div>
             </div>
             <div class="kpi-card">
-                <div class="value">~7.8 hrs</div>
-                <div class="desc">Ahorro de tiempo operativo mensual</div>
+                <div class="value" style="color: #0055D8;">7.8 hrs</div>
+                <div class="desc">Ahorro mensual de tiempo operativo</div>
             </div>
             <div class="kpi-card">
                 <div class="value" style="color: #2E7D32;">Inmediata</div>
-                <div class="desc">Resolución en autogestión para el cliente</div>
+                <div class="desc">Autogestión por WhatsApp con "Marco"</div>
             </div>
         </div>
     </div>
