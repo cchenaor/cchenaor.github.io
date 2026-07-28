@@ -298,7 +298,7 @@
         <!-- Banner -->
         <section class="banner">
             <h1>Triage Inteligente en Opción 3.3.1 (Ingreso APP SAC)</h1>
-            <p>Automatización del flujo de atenciones filtrando usuarios por estado de suspensión en Base de Datos.</p>
+            <p>Enrutamiento dinámico mediante integración API REST en Wolkvox según el estado del cliente.</p>
         </section>
 
         <!-- Main Content -->
@@ -315,8 +315,8 @@
                     <div class="label">Llamadas mensuales de desborde estimadas</div>
                 </div>
                 <div class="metric-card">
-                    <div class="number">BD Query</div>
-                    <div class="label">Filtro automático por documento ingresado</div>
+                    <div class="number">API REST</div>
+                    <div class="label">Consulta en tiempo real por documento digitado</div>
                 </div>
             </div>
 
@@ -330,7 +330,7 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Ingreso & Captura de Datos</h3>
-                        <p>El usuario llama a la opción <strong>3.3.1</strong>. El IVR solicita digitar el documento de identidad.</p>
+                        <p>El cliente ingresa a la opción <strong>3.3.1</strong> y el IVR captura su número de documento de identidad.</p>
                     </div>
                 </div>
 
@@ -340,8 +340,8 @@
                 <div class="flow-step highlight">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Consulta API a Base de Datos Satrack</h3>
-                        <p>Se realiza una validación en tiempo real: <strong>¿El cliente está suspendido por falta de pago?</strong></p>
+                        <h3>Consumo de API REST (HTTP Webhook)</h3>
+                        <p>Wolkvox ejecuta un <code>GET / POST</code> a la API de Satrack enviando el documento para consultar la respuesta del estado de la cuenta.</p>
                     </div>
                 </div>
 
@@ -352,55 +352,55 @@
                     <!-- Branch A -->
                     <div class="branch human">
                         <div class="branch-header">
-                            <span>🔴 SÍ: Cuenta Suspendida</span>
+                            <span>🔴 SÍ: Suspendido por Pago</span>
                         </div>
-                        <p><strong>Ruta: Asesor Humano.</strong> Requiere trámite de pago/reanudación de servicio y gestión de cartera personalizada.</p>
+                        <p><strong>Transferencia a Asesor Humano.</strong> Casos que requieren trámite de pago, negociación de cartera y reanudación manual del servicio.</p>
                     </div>
 
                     <!-- Branch B -->
                     <div class="branch ai">
                         <div class="branch-header">
-                            <span>🟢 NO: Cuenta Activa</span>
+                            <span>🟢 NO: Cliente Activo</span>
                         </div>
-                        <p><strong>Ruta: Agente Conversacional IA.</strong> Autogestión inmediata para reset de clave, credenciales o navegación en App.</p>
+                        <p><strong>Transferencia a Agente Conversacional IA.</strong> Atención automática para olvido de clave, credenciales de la App o soporte general.</p>
                     </div>
                 </div>
 
             </div>
 
             <!-- Strategic Benefits -->
-            <h2 class="section-title">Beneficios Clave para la Operación</h2>
+            <h2 class="section-title">Beneficios Clave de la Integración API</h2>
             
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-icon">✓</div>
                     <div class="benefit-text">
-                        <h4>Filtro de Desborde Innecesario</h4>
-                        <p>Evita que clientes activos saturen las líneas de asesores por temas de credenciales o reseteo de clave.</p>
+                        <h4>Integración Nativa vía API REST</h4>
+                        <p>Uso del nodo HTTP Request de Wolkvox Studio para validar el parámetro del documento en milisegundos.</p>
                     </div>
                 </div>
 
                 <div class="benefit-item">
                     <div class="benefit-icon">✓</div>
                     <div class="benefit-text">
-                        <h4>Atención Especializada a Morosos</h4>
-                        <p>Garantiza que el tiempo del asesor se concentre en casos de reanudación con potencial de recaudo.</p>
+                        <h4>Filtro Efectivo para Asesores</h4>
+                        <p>Los asesores solo atienden a clientes suspendidos para procesos de reanudación y recaudo.</p>
                     </div>
                 </div>
 
                 <div class="benefit-item">
                     <div class="benefit-icon">✓</div>
                     <div class="benefit-text">
-                        <h4>Disponibilidad 24/7 con IA</h4>
-                        <p>Los casos de reseteo o soporte App se resuelven de manera inmediata por el Agente Conversacional.</p>
+                        <h4>Resolución Inmediata con IA</h4>
+                        <p>Los clientes activos resuelven temas de clave y credenciales directamente con el Agente Conversacional.</p>
                     </div>
                 </div>
 
                 <div class="benefit-item">
                     <div class="benefit-icon">✓</div>
                     <div class="benefit-text">
-                        <h4>Eficiencia Operativa en Wolkvox</h4>
-                        <p>Integración limpia mediante Webhook de consulta previa sin afectar la arquitectura actual.</p>
+                        <h4>Optimización de Recursos</h4>
+                        <p>Reducción drástica del AHT global y de la saturación de líneas en la opción 3.3.1.</p>
                     </div>
                 </div>
             </div>
