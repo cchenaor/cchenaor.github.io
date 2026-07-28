@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Optimización IVR 3.3.1 - Satrack</title>
+    <style>
+        :root {
+            --satrack-blue: #153E85;
+            --satrack-blue-light: #2258BF;
+            --satrack-yellow: #F3B200;
+            --bg-gray: #F4F6F9;
+            --text-dark: #2C3E50;
+            --card-shadow: 0 10px 25px rgba(21, 62, 133, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            border-top: 6px solid var(--satrack-yellow);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 2.5rem;
+            background: #ffffff;
+            border-bottom: 1px solid #EAEFF5;
+        }
+
+        .logo {
+            max-height: 48px;
+            width: auto;
+        }
+
+        .badge-tag {
+            background-color: rgba(21, 62, 133, 0.08);
+            color: var(--satrack-blue);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Title Banner */
+        .banner {
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, var(--satrack-blue) 0%, var(--satrack-blue-light) 100%);
+            color: #ffffff;
+        }
+
+        .banner h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .banner p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 700px;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-card {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .metric-card .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--satrack-blue);
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-card .label {
+            font-size: 0.85rem;
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        /* Diagram / Flowchart Section */
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--satrack-blue);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background-color: var(--satrack-yellow);
+            border-radius: 2px;
+        }
+
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .flow-step {
+            background: #ffffff;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .flow-step.highlight {
+            border-color: var(--satrack-blue-light);
+            background-color: #F0F4FA;
+        }
+
+        .step-number {
+            background: var(--satrack-blue);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1rem;
+            color: var(--satrack-blue);
+            margin-bottom: 0.1rem;
+        }
+
+        .step-content p {
+            font-size: 0.88rem;
+            color: #475569;
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: var(--satrack-blue);
+            font-size: 1.2rem;
+            margin: -0.5rem 0;
+            font-weight: bold;
+        }
+
+        /* Decision Split */
+        .decision-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .branch {
+            border-radius: 12px;
+            padding: 1.2rem;
+            border: 2px solid;
+            position: relative;
+        }
+
+        .branch.human {
+            border-color: #CBD5E1;
+            background-color: #F8FAFC;
+        }
+
+        .branch.ai {
+            border-color: var(--satrack-yellow);
+            background-color: #FFFDF5;
+        }
+
+        .branch-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .branch.human .branch-header { color: #334155; }
+        .branch.ai .branch-header { color: #B48200; }
+
+        .branch p {
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            background-color: rgba(243, 178, 0, 0.15);
+            color: var(--satrack-blue);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h4 {
+            font-size: 0.9rem;
+            color: var(--satrack-blue);
+        }
+
+        .benefit-text p {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .decision-box, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="logo.png" alt="Satrack Logo" class="logo">
+            <span class="badge-tag">PROPUESTA DE OPTIMIZACIÓN IVR</span>
+        </header>
+
+        <!-- Banner -->
+        <section class="banner">
+            <h1>Triage Inteligente en Opción 3.3.1 (Ingreso APP SAC)</h1>
+            <p>Automatización del flujo de atenciones filtrando usuarios por estado de suspensión en Base de Datos.</p>
+        </section>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <!-- Metrics / Context -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="number">14.5%</div>
+                    <div class="label">Del tráfico total del IVR ingresa por la ruta 3.3.1</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">~1,120</div>
+                    <div class="label">Llamadas mensuales de desborde estimadas</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">BD Query</div>
+                    <div class="label">Filtro automático por documento ingresado</div>
+                </div>
+            </div>
+
+            <!-- Flow Chart -->
+            <h2 class="section-title">Flujo de Atención Propuesto en Wolkvox Studio</h2>
+            
+            <div class="flow-container">
+                
+                <!-- Step 1 -->
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Ingreso & Captura de Datos</h3>
+                        <p>El usuario llama a la opción <strong>3.3.1</strong>. El IVR solicita digitar el documento de identidad.</p>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- Step 2 -->
+                <div class="flow-step highlight">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Consulta API a Base de Datos Satrack</h3>
+                        <p>Se realiza una validación en tiempo real: <strong>¿El cliente está suspendido por falta de pago?</strong></p>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- Step 3: Branching -->
+                <div class="decision-box">
+                    <!-- Branch A -->
+                    <div class="branch human">
+                        <div class="branch-header">
+                            <span>🔴 SÍ: Cuenta Suspendida</span>
+                        </div>
+                        <p><strong>Ruta: Asesor Humano.</strong> Requiere trámite de pago/reanudación de servicio y gestión de cartera personalizada.</p>
+                    </div>
+
+                    <!-- Branch B -->
+                    <div class="branch ai">
+                        <div class="branch-header">
+                            <span>🟢 NO: Cuenta Activa</span>
+                        </div>
+                        <p><strong>Ruta: Agente Conversacional IA.</strong> Autogestión inmediata para reset de clave, credenciales o navegación en App.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Strategic Benefits -->
+            <h2 class="section-title">Beneficios Clave para la Operación</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">
+                        <h4>Filtro de Desborde Innecesario</h4>
+                        <p>Evita que clientes activos saturen las líneas de asesores por temas de credenciales o reseteo de clave.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">
+                        <h4>Atención Especializada a Morosos</h4>
+                        <p>Garantiza que el tiempo del asesor se concentre en casos de reanudación con potencial de recaudo.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">
+                        <h4>Disponibilidad 24/7 con IA</h4>
+                        <p>Los casos de reseteo o soporte App se resuelven de manera inmediata por el Agente Conversacional.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">
+                        <h4>Eficiencia Operativa en Wolkvox</h4>
+                        <p>Integración limpia mediante Webhook de consulta previa sin afectar la arquitectura actual.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
