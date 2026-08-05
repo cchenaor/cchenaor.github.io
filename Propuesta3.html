@@ -1,0 +1,282 @@
+import weasyprint
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Propuesta de Automatización Saturn Studio - Monitoreo Legal</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 12mm 15mm;
+            background-color: #f8fafc;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #1e293b;
+            background-color: #f8fafc;
+        }
+
+        /* Header */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #144796;
+            padding-bottom: 10px;
+        }
+
+        .header-logo {
+            width: 220px;
+            vertical-align: middle;
+        }
+
+        .header-logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        .header-title-cell {
+            vertical-align: middle;
+            text-align: right;
+        }
+
+        .header-title {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #144796;
+            margin: 0;
+        }
+
+        .header-subtitle {
+            font-size: 11pt;
+            color: #64748b;
+            margin: 4px 0 0 0;
+        }
+
+        /* Target Banner */
+        .objective-card {
+            background-color: #ffffff;
+            border-left: 5px solid #ffc200;
+            border-radius: 6px;
+            padding: 12px 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .objective-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #144796;
+            margin: 0 0 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .objective-desc {
+            font-size: 10pt;
+            color: #334155;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Section Title */
+        .section-header {
+            font-size: 13pt;
+            font-weight: bold;
+            color: #144796;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Flow Cards Table */
+        .flow-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 12px 0;
+            margin-left: -12px;
+            margin-right: -12px;
+            margin-bottom: 25px;
+        }
+
+        .flow-card {
+            width: 25%;
+            vertical-align: top;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #144796;
+            border-radius: 8px;
+            padding: 14px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-tag {
+            background-color: #e0e7ff;
+            color: #144796;
+            font-size: 8pt;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #0f172a;
+            margin: 0 0 8px 0;
+        }
+
+        .card-bullet {
+            font-size: 9pt;
+            color: #475569;
+            margin: 0 0 6px 0;
+            padding-left: 12px;
+            position: relative;
+            line-height: 1.35;
+        }
+
+        .card-bullet::before {
+            content: "•";
+            color: #ffc200;
+            font-weight: bold;
+            font-size: 12pt;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Benefits Footer Table */
+        .benefits-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 15px 0;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .benefit-cell {
+            width: 33.33%;
+            vertical-align: top;
+            background-color: #144796;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+
+        .benefit-title {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #ffc200;
+            margin: 0 0 4px 0;
+        }
+
+        .benefit-desc {
+            font-size: 8.5pt;
+            color: #e2e8f0;
+            margin: 0;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <table class="header-table">
+        <tr>
+            <td class="header-logo">
+                <img src="logo.png" alt="Satrack Logo">
+            </td>
+            <td class="header-title-cell">
+                <h1 class="header-title">Arquitectura del Flujo Automatizado</h1>
+                <p class="header-subtitle">Detección y Gestión Alerta Temprana de Correos Legales en Saturn Studio</p>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Objective Card -->
+    <div class="objective-card">
+        <div class="objective-title">Objetivo del Proyecto</div>
+        <div class="objective-desc">
+            Monitorear continuamente el buzón de Servicio al Cliente, clasificar respuestas con IA (AI Studio) y notificar de inmediato al equipo Jurídico para asegurar el cumplimiento estricto de los ANS y mitigar riesgos legales o sanciones.
+        </div>
+    </div>
+
+    <div class="section-header">Propuesta de Flujo de Trabajo (End-to-End)</div>
+
+    <!-- Process Columns -->
+    <table class="flow-table">
+        <tr>
+            <!-- Step 1 -->
+            <td class="flow-card">
+                <span class="step-tag">FASE 1</span>
+                <div class="card-title">1. Ingesta Continua</div>
+                <div class="card-bullet"><strong>Saturn Trigger:</strong> Monitoreo 24/7 de cuentas de correo (Gmail API / O365).</div>
+                <div class="card-bullet"><strong>Captura:</strong> Extracción automática de cuerpo, emisor y adjuntos.</div>
+                <div class="card-bullet"><strong>Filtro Inicial:</strong> Descarte automático de spam y notificaciones del sistema.</div>
+            </td>
+
+            <!-- Step 2 -->
+            <td class="flow-card" style="border-top-color: #ffc200;">
+                <span class="step-tag" style="background-color: #fffbeb; color: #b45309;">FASE 2</span>
+                <div class="card-title">2. Clasificación IA</div>
+                <div class="card-bullet"><strong>AI Studio Integration:</strong> Análisis semántico del contenido y adjuntos.</div>
+                <div class="card-bullet"><strong>Detección de Intención:</strong> Clasificación en Tutelas, Requerimientos, PQR Críticas.</div>
+                <div class="card-bullet"><strong>Extracción de Datos:</strong> Radicados, fechas límite y entidad emisora.</div>
+            </td>
+
+            <!-- Step 3 -->
+            <td class="flow-card">
+                <span class="step-tag">FASE 3</span>
+                <div class="card-title">3. Alerta Inmediata</div>
+                <div class="card-bullet"><strong>Notificación Multicanal:</strong> Envío de alerta prioritaria por Teams / Slack / Correo.</div>
+                <div class="card-bullet"><strong>Asignación Directa:</strong> Escalado automático a la Dirección Jurídica.</div>
+                <div class="card-bullet"><strong>Resumen Ejecutivo:</strong> Ficha rápida del caso generada por IA.</div>
+            </td>
+
+            <!-- Step 4 -->
+            <td class="flow-card" style="border-top-color: #ffc200;">
+                <span class="step-tag" style="background-color: #fffbeb; color: #b45309;">FASE 4</span>
+                <div class="card-title">4. Trazabilidad & ANS</div>
+                <div class="card-bullet"><strong>Saturn Data Store:</strong> Registro centralizado de cada correo recibido.</div>
+                <div class="card-bullet"><strong>Auditoría & Logs:</strong> Estampa de tiempo para control de ANS.</div>
+                <div class="card-bullet"><strong>Dashboard:</strong> Visibilidad total del estado de solicitudes en tiempo real.</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Impact & Value Section -->
+    <table class="benefits-table">
+        <tr>
+            <td class="benefit-cell">
+                <div class="benefit-title">⚡ Tiempo de Respuesta Inmediato</div>
+                <div class="benefit-desc">Reducción del tiempo de detección de horas a segundos tras la llegada del correo.</div>
+            </td>
+            <td class="benefit-cell">
+                <div class="benefit-title">🛡️ Mitigación de Riesgos</div>
+                <div class="benefit-desc">Cero vencimientos de términos legales y prevención efectiva de sanciones o multas.</div>
+            </td>
+            <td class="benefit-cell">
+                <div class="benefit-title">📊 Visibilidad & Gobierno</div>
+                <div class="benefit-desc">Trazabilidad completa en Saturn Data Store para control operativo e indicadores de ANS.</div>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
+"""
+
+with open("propuesta_saturn_studio.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("HTML generado exitosamente en propuesta_saturn_studio.html")
